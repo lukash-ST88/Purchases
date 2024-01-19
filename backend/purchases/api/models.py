@@ -13,4 +13,7 @@ class Purchase(models.Model):
     price = models.FloatField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='purchases')
 
+    def __str__(self):
+        return self.name
+
 

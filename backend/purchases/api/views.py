@@ -28,11 +28,15 @@ class PurchaseFilteredListView(generics.ListAPIView):
         return Purchase.objects.filter(category_id=self.kwargs['pk'])
 
 
-class PurchaseRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class PurchaseRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Purchase.objects.all()
     serializer_class = PurchaseListSerializer
 
 
-class CategoryCreate(generics.CreateAPIView):
+class CategoryCreateView(generics.CreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+class CategoryListView(generics.ListAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
