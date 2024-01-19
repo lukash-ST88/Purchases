@@ -8,7 +8,15 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class PurchaseSerializer(serializers.ModelSerializer):
+class PurchaseListSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(read_only=True)
+
+    class Meta:
+        model = Purchase
+        fields = ["id", "name", "price", "category"]
+
+
+class PurchaseCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Purchase
         fields = "__all__"
